@@ -1,0 +1,72 @@
+---
+title: "Statistical models: linking data to theory"
+---
+
+## Setup environment
+
+```{r}
+#| output: false
+library(tidyverse)
+library(easystats)
+library(ggformula)
+```
+
+## Class 1: Introduction
+
+<https://youtu.be/b2PyeRu53OU>
+
+What is a statistical model?
+
+A statistical model is a mathematical representation of a process that generates data, according to some theory.
+
+Thus, a statistical model is a way to link data to theory, i.e., a hypothesis about how a given data set was generated.
+
+Deterministic vs stochastic mathematical model.
+
+## Class 2: Statistical models
+
+XXX
+
+## Generalized linear models
+
+```{r}
+library(titanic)
+```
+
+```{r}
+m0 <- glm(Survived ~ 1, data = titanic_train, family = binomial)
+
+summary(m0)
+```
+
+```{r}
+plogis(parameters(m0)$Coefficient)
+```
+
+```{r}
+mean(titanic_train$Survived)
+```
+
+```{r}
+qlogis(mean(titanic_train$Survived))
+```
+
+```{r}
+m1 <- glm(Survived ~ 1 + Sex, data = titanic_train, family = binomial)
+
+summary(m1)
+```
+
+```{r}
+estimate_means(m1, "Sex")
+```
+
+```{r}
+m2 <- glm(Survived ~ 1 + Sex + factor(Pclass), data = titanic_train, family = binomial)
+
+summary(m2)
+```
+
+```{r}
+estimate_means(m2, c("Sex", "Pclass"))
+```

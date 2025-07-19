@@ -1,0 +1,17 @@
+{
+  "hash": "7f40beb4ab46828b599003478b75ba80",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Statistical models: linking data to theory\"\n---\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(tidyverse)\nlibrary(easystats)\nlibrary(ggformula)\n```\n:::\n\n\n## Generalized linear models\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(titanic)\n```\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nm0 <- glm(Survived ~ 1, data = titanic_train, family = binomial)\n```\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nplogis(parameters(m0)$Coefficient)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 0.3838\n```\n\n\n:::\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nmean(titanic_train$Survived)\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 0.3838\n```\n\n\n:::\n:::\n\n",
+    "supporting": [
+      "statistical_models.linking_data_to_theory_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
